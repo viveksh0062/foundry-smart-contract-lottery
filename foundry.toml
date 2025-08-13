@@ -18,9 +18,15 @@ ignored = [
     "lib/chainlink/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol",
 ]
 
+[profile.ci]
+sizes = true
+via_ir = false
+
+exclude = ["chainlink/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol"]
+
+
 optimizer = true
 optimizer_runs = 200
-via_ir = true
 
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
