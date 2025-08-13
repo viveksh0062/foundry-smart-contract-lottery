@@ -14,7 +14,7 @@ fs_permissions = [
 [fuzz]
 runs = 256
 
-ignored = ["contracts/test", "contracts/mocks"]
+ignored = ["contracts/test", "contracts/mocks/VRFCoordinatorV2_5Mock.sol"]
 
 optimizer = true
 optimizer_runs = 200
