@@ -37,9 +37,7 @@ contract HelperConfig is CodeConstants, Script {
         networkConfigs[ETH_SEPOLIA_CHAIN_ID] = getSepoliaEthConfig();
     }
 
-    function getConfigByChainId(
-        uint256 chainId
-    ) public returns (NetworkConfig memory) {
+    function getConfigByChainId(uint256 chainId) public returns (NetworkConfig memory) {
         if (networkConfigs[chainId].vrfCoordinator != address(0)) {
             return networkConfigs[chainId];
         } else if (chainId == LOCAL_CHAIN_ID) {
@@ -54,17 +52,16 @@ contract HelperConfig is CodeConstants, Script {
     }
 
     function getSepoliaEthConfig() public pure returns (NetworkConfig memory) {
-        return
-            NetworkConfig({
-                entranceFee: 0.01 ether, // 10000000000000000 1e16
-                interval: 30, // 30 seconds
-                vrfCoordinator: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B,
-                keyHash: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
-                callbackGasLimit: 500000, // 500000 gas
-                subscriptionId: 36496224610653853352484947123754797445325454816886936026140565091938229568942,
-                link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
-                account: 0x74790d31cB7B1AAAADa117a61810e28A13997922
-            });
+        return NetworkConfig({
+            entranceFee: 0.01 ether, // 10000000000000000 1e16
+            interval: 30, // 30 seconds
+            vrfCoordinator: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B,
+            keyHash: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
+            callbackGasLimit: 500000, // 500000 gas
+            subscriptionId: 36496224610653853352484947123754797445325454816886936026140565091938229568942,
+            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+            account: 0x74790d31cB7B1AAAADa117a61810e28A13997922
+        });
     }
 
     function getOrCreateAnvilEthConfig() public returns (NetworkConfig memory) {
@@ -75,11 +72,8 @@ contract HelperConfig is CodeConstants, Script {
 
         // Deploy mocks and such
         vm.startBroadcast();
-        VRFCoordinatorV2_5Mock vrfCoordinatorMock = new VRFCoordinatorV2_5Mock(
-            MOCK_BASE_FEE,
-            MOCK_GAS_PRICE_LINK,
-            MOCK_WEI_PER_UINT_LINK
-        );
+        VRFCoordinatorV2_5Mock vrfCoordinatorMock =
+            new VRFCoordinatorV2_5Mock(MOCK_BASE_FEE, MOCK_GAS_PRICE_LINK, MOCK_WEI_PER_UINT_LINK);
         LinkToken linkToken = new LinkToken();
         vm.stopBroadcast();
 
