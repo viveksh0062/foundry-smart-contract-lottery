@@ -14,4 +14,11 @@ fs_permissions = [
 [fuzz]
 runs = 256
 
+ignored = ["contracts/test"]
+
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
