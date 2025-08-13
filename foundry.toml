@@ -14,7 +14,7 @@ fs_permissions = [
 [fuzz]
 runs = 256
 
-ignored = ["contracts/test"]
+ignored = ["contracts/test", "contracts/mocks"]
 
 optimizer = true
 optimizer_runs = 200
