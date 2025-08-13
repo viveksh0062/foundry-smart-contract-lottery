@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Forge build
         run: |
-          forge build --sizes --skip "lib/chainlink/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol"
+          forge build --sizes --profile ci
         id: build
 
       - name: Run Forge tests
